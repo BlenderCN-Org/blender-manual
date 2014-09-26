@@ -1,50 +1,127 @@
 Multi-View Render
 *****************
 
-Workflow
-========
-``To be written.``
+For this 5-minute guide we will take an existent ``.blend`` file that was made for monoscopic rendering and transform it in stereo-3d ready.
 
-Individual Parts
-================
+.. figure:: /images/Manual_multiview_workflow_render_anaglyph.png
+  :width: 700px
+  :figwidth: 700px
 
-``The following sections will be moved to the corresponding individual sections later.``
+  Creature Factory 2 by Andy Goralczyk Rendered in Stereo 3D (anaglyph)
 
-Scene Views
-===========
+Introduction
+============
 
-Views
-  In the Render Layer panel you can enable support for Views and setup your Stereo 3D or Multi-View scene. The properties defined here will be used across the entire Blender file (compositor, viewport, image editor).
+Start opening up your project file, in this case ``turntable.blend`` from the **Creature Factory 2** Open Movie Workshop series from the Blender Institute by **Andy Goralczyk**.
 
-.. figure:: /images/Manual_multiview_scene.png
-   :width: 484px
-   :figwidth: 300px
+.. figure:: /images/Manual_multiview_workflow_1.png
+  :width: 1213px
+  :figwidth: 700px
 
-   Scene Views Settings
-
+  Turn Table Creature Factory 2
 
 Views Setup
------------
+===========
 
-Stereo 3D
-  Single stereo camera system. This option transforms the active camera in a stereo pair to be controlled by the Stereoscopy settings in the camera property panel.
+Go to the Render Layers panel and enable `Views` for this scene. 
 
-Multi-View
-  Multi camera system. This is a more flexible system that allows for stereo 3d as well as other non-standard outputs such as fulldome and autostereo displays. The **left** and **right** views are considered a special case since they allow your scene to be previsualized as a regular Stereo 3D from the respective cameras.
+.. Go to the Render layers panel and enable :guilabel:`Views` for this scene.
 
-Suffix
-  When using 'Stereo 3D' the suffix is used when saving the images (e.g., ``0001_L.jpg``, ``0001_R.jpg``). When using 'Multi-View' the suffix is also used to identify a group of cameras to use for rendering.
+.. figure:: /images/Manual_multiview_workflow_2.png
+  :width: 275px
+  :figwidth: 275px
 
-.. note:: Multi-View Camera Suffix
+  Scene Render Views
 
-  If you want to render a Left, Right and Center views you start by creating a *center* render view (the *left* and *right* are created by default). The new view is created with an empty suffix while the *left* and *right* have ``_L`` and ``_R`` as their default respective suffices.
+.. note::
+  When you turn on `Views` in the scene you get 3d preview in the viewport, as well as multiple panels that are now accessible all over the user interface.
 
-  In this case create the following cameras: ``Camera.Wide_L``, ``Camera.Wide_R`` and ``Camera.Wide``. Blender will render and preview those cameras regardless of the actual active camera between them. Now create the cameras: ``Camera.Zoom_L``, ``Camera.Zoom_R``, ``Camera.Zoom``. You can alternate between the render cameras (Wide cameras or Zoom cameras) by simply setting one of them as the active camera. In fact if you use the *Bind Camera to Markers* tool in the Timeline you can change your render cameras during the rendering.
+.. figure:: /images/Manual_multiview_workflow_3.png
+  :width: 1213px
+  :figwidth: 700px
+
+  Viewport with 3D visualization
+
+Camera
+======
+
+To tweak the stereo 3d parameters select the camera in the Outliner. In the Camera panel go to the Stereoscopy tab and change the `Convergence Distance`.
+
+The viewport will respond in real-time to those changes allowing you to preview the current depth value of the scene.
+
+.. figure:: /images/Manual_multiview_workflow_4.png
+   :width: 247px
+   :figwidth: 247px
+
+   Stereo Convergence Distance
+
+Viewport
+========
+
+Before fine-tuning the camera parameters you can set the convergence plane in the viewport based in your scene depth layout. Go outside the camera view and you will instantly see the convergence plane in front of the camera.
+
+You can toggle this and other display settings in the Stereoscopy tab of the viewport properties panel. In the following image the cameras frutum volumes are also visible.
+
+
+.. figure:: /images/Manual_multiview_workflow_5.png
+   :width: 1036px
+   :figwidth: 700px
+
+   Viewport Plane and Volume Stereo Preview
+
+Stereo 3D Display
+=================
+
+If you have a real 3d display at some point you can change the 3D display mode in the Window menu, by calling the Stereo 3D operator. Be aware that some modes require a fullscreen editor to work.
+
+.. figure:: /images/Manual_multiview_window_stereo_3d.png
+   :width: 642px
+   :figwidth: 642px
+
+   Window Menu, Stereo 3D Operator
+
+
+OpenGL Preview
+==============
+
+.. figure:: /images/Manual_multiview_workflow_6.gif
+  :width: 300px
+  :figwidth: 300px
+  :align: right
+
+  Turn Table OpenGL Rendering Preview
+
+Before rendering your scene you can save an OpenGL preview of the animation for testing in the final display. In the Render Output panel you can chose the output `Views Format`.
+
+The options include individual files per view, top-bottom, anaglyph among others. Pick the one that fits your display requirements.
+
+Rendering and Image Editor
+==========================
+
+Once you are happy with the results you can render out the final animation. In the Image Editor you can inspect the individual views and the stereo result.
+
+Image Formats
+=============
+
+Your final animation can be saved in more robust formats than the ones used by the OpenGL render preview. In this example we saved as cross-eyed side-by-side stereo 3d.
+
+.. figure:: /images/Manual_multiview_workflow_render_sidebyside.png
+  :width: 700px
+  :figwidth: 700px
+
+  Side by Side Cross-Eye Format
+
+Final Considerations
+====================
+
+As this guide showed, there is more to stereo 3d rendering than just generate two images. The earlier the stereo pipeline is considered the smoother it will get. The following sections are a more in-depth view of the individual components we visited in the workflow.
 
 Window Stereo 3D Display
 ========================
 
-An essential component of the Stereoscopy pipeline is the ability to display the stereo image in a proper display. Blender supports from high-end 3D displays to simple red-cyan glasses. On top of that you can set a different display mode for each window. The display mode can be changed via the Window menu or if you create your own shortcuts for the **wm.stereo_3d** operator.
+An essential component of the Stereoscopy pipeline is the ability to display the stereo image in a proper display. Blender supports from high-end 3D displays to simple red-cyan glasses. On top of that you can set a different display mode for each window.
+
+The display mode can be changed via the Window menu or if you create your own shortcuts for the **wm.stereo_3d** operator.
 
 .. figure:: /images/Manual_multiview_window_stereo_3d.png
    :width: 642px
