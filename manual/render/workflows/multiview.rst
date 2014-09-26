@@ -60,7 +60,7 @@ Viewport
 
 Before fine-tuning the camera parameters you can set the convergence plane in the viewport based in your scene depth layout. Go outside the camera view and you will instantly see the convergence plane in front of the camera.
 
-You can toggle this and other display settings in the Stereoscopy tab of the viewport properties panel. In the following image the cameras frutum volumes are also visible.
+You can toggle this and other display settings in the Stereoscopy tab of the viewport properties panel. In the following image the cameras frustum volumes are also visible.
 
 
 .. figure:: /images/Manual_multiview_workflow_5.png
@@ -155,7 +155,7 @@ Top-Bottom
 Stereo 3D Camera
 ================
 
-When using the Stereo 3D scene view setup a stereo pair is created on-the-fly and used for rendering and previsualization. For all the purposes the this works as two cameras that share most parameters (focal length, clipping, ...). The stereo pair, however, is offsetted, and can have unique rotation and shift between itself.
+When using the Stereo 3D scene view setup a stereo pair is created on-the-fly and used for rendering and previsualization. For all the purposes this works as two cameras that share most parameters (focal length, clipping, ...). The stereo pair, however, is offsetted, and can have unique rotation and shift between itself.
 
 .. figure:: /images/Manual_multiview_camera.png
    :width: 805px
@@ -214,9 +214,9 @@ Volume
 Multi-View and Stereo 3D Image I/O
 ==================================
 Multi-View and Stereo 3D
-  Multi-View images can be saved in special formats according to the production requirements. By default the system saves each view as an individual file, thus generating as many files as views to be rendered. In stereo 3d productions, for the final deployment or even intermedium previews it's convenient to save stereo 3d images, that are ready to use with 3D displays or simple anaglyph glasses. The formats supported match the display modes avaiable for the window.
+  Multi-View images can be saved in special formats according to the production requirements. By default the system saves each view as an individual file, thus generating as many files as views to be rendered. In stereo 3d productions, for the final deployment or even intermediary previews it's convenient to save stereo 3d images, that are ready to use with 3D displays or simple anaglyph glasses. The formats supported match the display modes available for the window.
 
-Lossly-Formats
+Lossy-Formats
   Some stereo 3D formats represent a considerable loss of data. For example, the Anaglyph format will cap out
   entire color channels from the original image. The Top-Bottom compressed will discard half of your vertical resolution data.
   The Interlace will mash your data considerably. Once you export in those formats, you can still import the image
